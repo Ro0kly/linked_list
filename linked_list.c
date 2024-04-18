@@ -1,5 +1,7 @@
 #include "linked_list.h"
 
+// SINGLE NODE METHODS
+
 Node *createNode(int id) {
 	Node *node = NULL;
 	node = malloc(sizeof(Node));
@@ -87,7 +89,6 @@ Node *remove_with_id(Node *node, int id) {
 	} else {
 		while (current != NULL) {
 			if (current->next->id == id) {
-				Node *tmp = current->next;
 				current->next = current->next->next;
 				break;
 			} else {
@@ -221,3 +222,52 @@ void bubble_sort(Node *node) {
 //     free(current);
 //     printListReverse(head);
 // }
+
+// DOUBLE NODE METHODS
+
+DNode *createNodeD(int id) {
+	DNode *dnode = NULL;
+	dnode = malloc(sizeof(DNode));
+	dnode->id = id;
+	dnode->prev = NULL;
+	dnode->next = NULL;
+	return dnode;
+}
+
+void printListD(DNode *head) {
+	DNode *current = head;
+	while (current != NULL) {
+		if (current->next == NULL) {
+			printf("%d", current->id);
+		} else {
+			printf("%d ", current->id);
+		}
+		current = current->next;
+	}
+}
+
+void pushD(DNode *head, DNode *next) {
+	if (head == NULL) {
+		printf("Head is NULL");
+		return;
+	}
+	DNode *current = head;
+	while (current->next != NULL) {
+		current = current->next;
+	}
+	current->next = next;
+	next->prev = current;
+}
+
+void remove_last_D(DNode *head) {
+	if (head == NULL) {
+		printf("Head is NULL");
+		return;
+	}
+	DNode *current = head;
+	while (current->next != NULL) {
+		current = current->next;
+	}
+	DNode *tmp = current->prev;
+	tmp->next = NULL;
+}
