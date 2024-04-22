@@ -4,3 +4,6 @@ single:
 doubly:
 	gcc -Wall -Werror -Wextra linked_list.c linked_list_doubly.c
 	./a.out
+cycle:
+	gcc -Wall -Werror -Wextra linked_list.c linked_list_cycle.c
+	./a.out

@@ -17,6 +17,10 @@ int main() {
     pushD(head, five);
 
     remove_last_D(head);
+    head = remove_first_D(head);
+    head = insert_to_start_D(head, -1);
+    insert_at_position_D(head, 4, 6);
+    remove_with_id_D(head, 2);
     printListD(head);
     return 0;
 }

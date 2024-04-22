@@ -12,14 +12,15 @@ typedef struct dnode {
 	struct dnode *next;
 } DNode;
 
+// TASK:-- Refactor all methods to check if head == NULL;
 // TASK:-- Craete List as a variable for linked list usage;
 // typedef struct list {
 // 	DNode *head;
 //   DNode *tail;
 // } List;
 
-// SINGLE NODE METHODS
-// Main method
+// SINGLE LIST METHODS
+// Main methods
 Node *createNode(int id);
 void printList(Node *head);
 void push(Node *node, Node *next);
@@ -36,11 +37,22 @@ Node *find(Node *node, int id);
 int contains(Node *node, int id);
 Node *swap_ids(Node *node, int id1, int id2);
 void bubble_sort(Node *node);
-// TASK:-- COMPILE ERROR
-// void printListReverse(Node *head);
 
-// DOUBLE NODE METHODS
+// DOUBLY LIST METHODS
+// Main methods
 DNode *createNodeD(int id);
 void printListD(DNode *head);
 void pushD(DNode *node, DNode *next);
 void remove_last_D(DNode *head);
+DNode *remove_first_D(DNode *head);
+DNode *insert_to_start_D(DNode *head, int id);
+
+// Additional methods
+void insert_at_position_D(DNode *head, int position, int id);
+void remove_with_id_D(DNode *head, int id);
+DNode *find_D(DNode *head, int id);
+
+// CYCLE LIST METHODS
+// Main methods
+
+void printListDCycle(DNode *head);
