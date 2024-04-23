@@ -349,6 +349,10 @@ DNode *find_D(DNode *head, int id) {
 // CYCLE LIST METHODS
 
 void printListDCycle(DNode *head) {
+	if (head == NULL) {
+		printf("Head is NULL\n");
+		return;
+	}
 	DNode *current = head;
 	do {
 		if (current -> next == head) {
