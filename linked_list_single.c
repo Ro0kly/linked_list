@@ -3,16 +3,14 @@
 #include <stdlib.h>
 
 int main() {
-	Node *head = createNode(1);
+	Node *head = createNode(0);
+	Node *one = createNode(1);
 	Node *two = createNode(2);
-	Node *three = createNode(3);
-	Node *four = createNode(4);
-	Node *five = createNode(5);
 
+	push(head, one);
 	push(head, two);
-	push(two, three);
-	push(three, four);
-	push(four, five);
+
+	pop(head);
 
 	printList(head);
 	return 0;

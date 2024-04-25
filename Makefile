@@ -7,3 +7,6 @@ doubly:
 cycle:
 	gcc -Wall -Werror -Wextra linked_list.c linked_list_cycle.c
 	./a.out
+queue:
+	gcc -Wall -Werror -Wextra linked_list.c linked_list_queue.c
+	./a.out

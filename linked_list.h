@@ -13,20 +13,20 @@ typedef struct dnode {
 } DNode;
 
 // TASK:-- Refactor all methods to check if head == NULL;
-// TASK:-- Craete List as a variable for linked list usage;
-// typedef struct list {
-// 	DNode *head;
-//   DNode *tail;
-// } List;
+// TASK:-- Refactor all methods with pointer on pointer;
+typedef struct qu {
+	Node *head;
+	Node *tail;
+} Queue;
 
 // SINGLE LIST METHODS
 // Main methods
 Node *createNode(int id);
 void printList(Node *head);
-void push(Node *node, Node *next);
+void push(Node *head, Node *next);
 Node *insert_to_start(Node *node, int id);
 Node *remove_first(Node *node);
-void remove_last(Node *node);
+void pop(Node *head);
 
 // Additional methods
 void printListRecursion(Node *head);
@@ -43,7 +43,7 @@ void bubble_sort(Node *node);
 DNode *createNodeD(int id);
 void printListD(DNode *head);
 void pushD(DNode *node, DNode *next);
-void remove_last_D(DNode *head);
+void remove_last_D(DNode **head);
 DNode *remove_first_D(DNode *head);
 DNode *insert_to_start_D(DNode *head, int id);
 
@@ -56,3 +56,7 @@ DNode *find_D(DNode *head, int id);
 // Main methods
 
 void printListDCycle(DNode *head);
+
+// QUEUE METHODS
+void in(Queue *queue, Node *new_node);
+void out(Queue *queue);

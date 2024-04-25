@@ -33,7 +33,17 @@ void printListRecursion(Node *head) {
 	}
 }
 
-void push(Node *node, Node *next) { node->next = next; }
+void push(Node *head, Node *next) {
+	if (head == NULL) {
+		printf("Head is NULL");
+		return;
+	}
+	Node *current = head;
+	while (current->next != NULL) {
+		current = current->next;
+	}
+	current->next = next;
+}
 
 Node *insert_to_start(Node *node, int id) {
 	Node *new_head = createNode(id);
@@ -67,8 +77,12 @@ Node *remove_first(Node *node) {
 	return node;
 }
 
-void remove_last(Node *node) {
-	Node *current = node;
+void pop(Node *head) {
+	if (head == NULL) {
+		printf("Head is NULL");
+		return;
+	}
+	Node *current = head;
 	while (current != NULL) {
 		if (current->next->next == NULL) {
 			Node *tmp = current->next;
@@ -225,6 +239,10 @@ DNode *createNodeD(int id) {
 }
 
 void printListD(DNode *head) {
+	if (head == NULL) {
+		printf("Head is NULL");
+		return;
+	}
 	DNode *current = head;
 	while (current != NULL) {
 		if (current->next == NULL) {
@@ -260,12 +278,16 @@ DNode *remove_first_D(DNode *head) {
 	return head;
 }
 
-void remove_last_D(DNode *head) {
-	if (head == NULL) {
+void remove_last_D(DNode **head) {
+	if (*head == NULL) {
 		printf("Head is NULL");
 		return;
 	}
-	DNode *current = head;
+	if ((*head)->next == NULL) {
+		*head = NULL;
+		return;
+	}
+	DNode *current = *head;
 	while (current->next != NULL) {
 		current = current->next;
 	}
@@ -355,11 +377,46 @@ void printListDCycle(DNode *head) {
 	}
 	DNode *current = head;
 	do {
-		if (current -> next == head) {
-			printf("%d",current->id);
+		if (current->next == head) {
+			printf("%d", current->id);
 		} else {
-			printf("%d ",current->id);
+			printf("%d ", current->id);
 		}
 		current = current->next;
-	} while(current != head);
+	} while (current != head);
+}
+
+// QUEUE METHODS
+
+void in(Queue *queue, Node *new_node) {
+	if (queue->head == NULL) {
+		printf("Head is NULL\n");
+		return;
+	}
+	if (new_node == NULL) {
+		printf("NEW HEAD is NULL\n");
+		return;
+	}
+	Node *tmp = queue->head;
+	queue->head = new_node;
+	queue->head->next = tmp;
+}
+
+void out(Queue *queue) {
+	if (queue->head == NULL) {
+		printf("Head is NULL\n");
+		return;
+	}
+	Node *current = queue->head;
+	while (current != NULL) {
+		if (current->next->next == NULL) {
+			Node *tmp = current->next;
+			current->next = NULL;
+			queue->tail = current;
+			free(tmp);
+			break;
+		} else {
+			current = current->next;
+		}
+	}
 }
