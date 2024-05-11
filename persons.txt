@@ -1,0 +1,8 @@
+0 Smetanin M.V. 142343 1000
+1 Voronin A.G. 2324 10132
+2 Rumov I.E. 121 2093
+3 Hanin P.M. 14 142515
+4 Farsin W.X. 8792 829
+5 Ropot U.O. 9028 18492
+6 Lunin Y.G. 2919 49202
+7 Radov F.R. 194 192401
