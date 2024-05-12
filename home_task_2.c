@@ -54,7 +54,7 @@ void push(Person *head, Person *next) {
 }
 
 void print_person(Person *person) {
-	printf("per: %d, %s, %s, %d, %d\n", person->id, person->second_name, person->short_name, person->account_number,
+	printf("person: %d, %s, %s, %d, %d\n", person->id, person->second_name, person->short_name, person->account_number,
 	       person->deposit);
 }
 
@@ -69,7 +69,7 @@ void print_persons(Person *head) {
 	} while (1);
 }
 
-void create_list_form_file(FILE *fptr, Person **head, Person **tail, int *count) {
+void create_list_from_file(FILE *fptr, Person **head, Person **tail, int *count) {
 	const int str_length = 1000;
 	char str[str_length];
 	while (fgets(str, str_length, fptr) != NULL) {
@@ -151,7 +151,7 @@ void get_sum_by_pivot(Person *head, int pivot) {
         }
         current = current->next;
     } while (current != head);
-    printf("The PIVOT: %d, the SUM UPPER the pivot: %d\n", pivot, sum);
+    printf("Опорная сумма: %d, сумма депозитов счетов выше опорный суммы: %d\n", pivot, sum);
 }
 
 int main() {
@@ -163,16 +163,16 @@ int main() {
 	FILE *fptr = NULL;
 	fptr = fopen("persons.txt", "r");
 	if (fptr == NULL) {
-		printf("There is no such file.\n");
+		printf("Такого файла не существует.\n");
 	} else {
-		printf("File is open to read.\n");
-		create_list_form_file(fptr, &head, &tail, &person_count);
+		printf("Файл готов к чтению.\n");
+		create_list_from_file(fptr, &head, &tail, &person_count);
         printf("--------------------------\n");
-        printf("The list before change (initial):\n");
+        printf("Начальный список вкладчиков (до изменений):\n");
 		print_persons(head);
         printf("--------------------------\n");
-		printf("PERSON COUNT: %d\n\n", person_count);
-        printf("The list sorted by account number:\n");
+		printf("Количество вкладчиков: %d\n\n", person_count);
+        printf("Список вкладчиков остортированный по возрастанию номеров счетов:\n");
 		sort_by_account_number(&head, &tail);
 		print_persons(head);
         printf("\n");
