@@ -10,9 +10,6 @@ cycle:
 queue:
 	gcc -Wall -Werror -Wextra linked_list.c linked_list_queue.c
 	./a.out
-ht:
-	gcc -Wall -Werror -Wextra home_task_2.c
-	./a.out
-hts:
-	gcc home_task_2.c
+sort:
+	gcc -Wall -Werror -Wextra doubly_linked_list_sort.c
 	./a.out
